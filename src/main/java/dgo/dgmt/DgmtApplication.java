@@ -10,4 +10,6 @@ public class DgmtApplication {
 		SpringApplication.run(DgmtApplication.class, args);
 	}
 
+
+
 }

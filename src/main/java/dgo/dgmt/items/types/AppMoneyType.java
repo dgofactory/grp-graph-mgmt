@@ -1,4 +1,30 @@
 package dgo.dgmt.items.types;
 
-public class AppMoneyType {
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
+@JsonSerialize(using = SingleValueSerializer.class)
+@JsonDeserialize(using = MoneyValueDeserializer.class)
+public class AppMoneyType implements AbstractType<MoneyValue>{
+
+    @JsonProperty
+    private final MoneyValue value;
+
+    public AppMoneyType(Double rawValue, String code) {
+        this.value = MoneyValue.builder()
+                .value(rawValue)
+                .code(code)
+                .build();
+    }
+
+    @Override
+    public AppType appType() {
+        return AppType.MONETARY;
+    }
+
+    @Override
+    public MoneyValue rawValue() {
+        return this.value;
+    }
 }

@@ -1,4 +1,8 @@
 package dgo.dgmt.items.types;
 
-public class AbstractType {
+
+public interface  AbstractType<T> {
+    AppType appType();
+    T rawValue();
+
 }

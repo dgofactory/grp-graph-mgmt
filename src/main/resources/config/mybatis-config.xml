@@ -3,11 +3,4 @@
         PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
-
-    <typeHandlers>
-        <typeHandler handler="dgo.dgmt.items.mappers.ItemPropertiesTypeHandlerAdapter"
-        javaType="dgo.dgmt.items.mappers.ItemProps"
-        jdbcType="OTHER"/>
-    </typeHandlers>
 </configuration>

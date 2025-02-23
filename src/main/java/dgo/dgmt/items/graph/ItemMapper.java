@@ -1,4 +1,4 @@
-package dgo.dgmt.items.mappers;
+package dgo.dgmt.items.graph;
 
 import dgo.dgmt.items.Item;
 import dgo.dgmt.items.ageutils.AgtypeWrapper;
@@ -11,6 +11,5 @@ import reactor.core.publisher.Mono;
 public interface ItemMapper {
     Flux<ItemGraph> findByName(@Param("name") AgtypeWrapper<String> name);
     Flux<ItemGraph> findAll();
-
     Mono<ItemGraph> createItem(@Param("item") Item item);
 }

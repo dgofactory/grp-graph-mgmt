@@ -1,6 +1,6 @@
 package dgo.dgmt.items.types;
 
-public enum EnumTypes {
+public enum AppType {
     STRING("string"),
     NUMBER("integer"),
     BOOLEAN("boolean"),
@@ -9,11 +9,11 @@ public enum EnumTypes {
     PHONE("phone"),
     SHORT_DATE("short_date"),
     LONG_DATE("long_date"),
-    NULL("null");
+    TIME("time");
 
     private final String type;
 
-    EnumTypes(String type) {
+    AppType(String type) {
         this.type = type;
     }
 

@@ -1,1 +1,29 @@
-spring.application.name=dgmt
+
+spring:
+  application:
+    name: items-service
+
+  r2dbc:
+    mybatis:
+      name: itemsRC
+      r2dbc-url: r2dbc:postgresql://localhost:5432/items
+      username: postgres
+      password: postgres
+
+      pool:
+        validation-query: LOAD 'age'; SET search_path = ag_catalog, "$user", public;
+        initial-size: 2
+        max-size: 20
+
+
+  docker:
+    compose:
+      enabled: true
+r2dbc:
+  mybatis:
+    mapper-locations: classpath:mappers/*.xml
+    config-location: classpath:config/mybatis-config.xml
+    type-handlers-package: dgo.dgmt.items.mappers
+logging:
+  level:
+    dgo: debug

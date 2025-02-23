@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dgo.dgmt.items.graph.ItemMapper">
+
+    <select id="findByName" resultType="dgo.dgmt.items.graph.ItemGraph">
+        select * from ag_catalog.cypher('items', $$
+        MATCH (i:Item)
+        <if test="!name.isNull()">WHERE i.name = ${name}</if>
+        RETURN id(i), label(i), properties(i)
+        $$) as (id bigint, label varchar, properties ag_catalog.agtype)
+    </select>
+
+    <select id="findAll" resultType="dgo.dgmt.items.graph.ItemGraph">
+        select * from ag_catalog.cypher('items', $$
+        MATCH (i:Item)
+        RETURN id(i), properties(i)
+        $$) as (id bigint, properties ag_catalog.agtype)
+    </select>
+
+</mapper>

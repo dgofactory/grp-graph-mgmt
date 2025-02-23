@@ -1,23 +1,23 @@
-package dgo.dgmt.items.service;
+package dgo.dgmt.items.grpc;
 
 
 import dgo.dgmt.items.*;
 import dgo.dgmt.items.ageutils.AgtypeWrapper;
-import dgo.dgmt.items.mappers.ItemMapper;
-import dgo.dgmt.items.mappers.ObjectMapperUtil;
+import dgo.dgmt.items.graph.ItemMapper;
+import dgo.dgmt.items.graph.ObjectMapperUtil;
 import io.grpc.stub.StreamObserver;
 import org.springframework.stereotype.Service;
 
 
 @Service
-public class ItemsServiceImpl extends ItemsServiceGrpc.ItemsServiceImplBase {
+public class GenericItemGrpcService extends ItemsServiceGrpc.ItemsServiceImplBase {
 
 
     ItemMapper itemMapper;
 
     ObjectMapperUtil objectMapperUtils;
 
-    public ItemsServiceImpl(ItemMapper itemMapper, ObjectMapperUtil objectMapperUtils) {
+    public GenericItemGrpcService(ItemMapper itemMapper, ObjectMapperUtil objectMapperUtils) {
         this.itemMapper = itemMapper;
         this.objectMapperUtils = objectMapperUtils;
     }
@@ -30,9 +30,7 @@ public class ItemsServiceImpl extends ItemsServiceGrpc.ItemsServiceImplBase {
                 .doOnNext(itemData -> {
 
             Item item = Item.newBuilder()
-                    .setName(itemData.getProperties())
-                    .setDescription(itemData.getProperties())
-                      .build();
+                  .build();
             responseObserver.onNext(item);
 
         }).doOnTerminate(responseObserver::onCompleted)
@@ -49,9 +47,6 @@ public class ItemsServiceImpl extends ItemsServiceGrpc.ItemsServiceImplBase {
                 .doOnNext(itemData -> {
 
                             Item item = Item.newBuilder()
-                                    .setId(String.valueOf(itemData.getId()))
-                                    .setName(itemData.getProperties().getName())
-                                    .setDescription(itemData.getProperties().getBrand())
                                     .build();
 
                             responseObserver.onNext(item);

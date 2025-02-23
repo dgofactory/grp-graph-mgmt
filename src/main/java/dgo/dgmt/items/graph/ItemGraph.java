@@ -1,4 +1,4 @@
-package dgo.dgmt.items.mappers;
+package dgo.dgmt.items.graph;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
