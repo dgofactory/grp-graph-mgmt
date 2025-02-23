@@ -1,9 +1,12 @@
 package dgo.dgmt.items.types;
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import dgo.dgmt.items.types.json.NumberDeserializer;
 import dgo.dgmt.items.types.json.SingleValueSerializer;
 
 @JsonSerialize(using = SingleValueSerializer.class)
+@JsonDeserialize(using = NumberDeserializer.class)
 public class AppNumberType implements AbstractType<Long>{
 
     private final Long value;

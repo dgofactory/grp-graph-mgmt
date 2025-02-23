@@ -110,5 +110,45 @@ public class TypesTests {
         assertTrue(result.rawValue().isEqual(dateTimeType.get().rawValue()));
     }
 
+    @Test
+    void testDefaultValueAppDateTypeDes() {
+        AppDateType result = AppTypesFactoryDefault.defaultValue(AppType.SHORT_DATE);
+        Optional<AppDateType> dateTimeType = TypesHelper.readFromString(AppDateType.class, TypesHelper.writeAsString(result));
+        assertTrue(dateTimeType.isPresent());
+        assertTrue(result.rawValue().isEqual(dateTimeType.get().rawValue()));
+    }
+
+    @Test
+    void testDefaultValueTimeTypeDes() {
+        AppTimeType result = AppTypesFactoryDefault.defaultValue(AppType.TIME);
+        Optional<AppTimeType> dateTimeType = TypesHelper.readFromString(AppTimeType.class, TypesHelper.writeAsString(result));
+        assertTrue(dateTimeType.isPresent());
+        assertTrue(result.rawValue().isEqual(dateTimeType.get().rawValue()));
+    }
+
+    @Test
+    void testDefaultValueNumberTypeDes() {
+        AppNumberType result = AppTypesFactoryDefault.defaultValue(AppType.NUMBER);
+        Optional<AppNumberType> value = TypesHelper.readFromString(AppNumberType.class, TypesHelper.writeAsString(result));
+        assertTrue(value.isPresent());
+        assertEquals(result.rawValue(),value.get().rawValue());
+    }
+
+    @Test
+    void testDefaultValueStringTypeDes() {
+        AppStringType result = AppTypesFactoryDefault.defaultValue(AppType.STRING);
+        Optional<AppStringType> value = TypesHelper.readFromString(AppStringType.class, TypesHelper.writeAsString(result));
+        assertTrue(value.isPresent());
+        assertEquals(result.rawValue(),value.get().rawValue());
+    }
+
+
+    @Test
+    void testDefaultValueBooleanTypeDes() {
+        AppBooleanType result = AppTypesFactoryDefault.defaultValue(AppType.BOOLEAN);
+        Optional<AppBooleanType> value = TypesHelper.readFromString(AppBooleanType.class, TypesHelper.writeAsString(result));
+        assertTrue(value.isPresent());
+        assertEquals(result.rawValue(),value.get().rawValue());
+    }
 
 }
