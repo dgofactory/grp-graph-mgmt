@@ -2,6 +2,7 @@ package dgo.dgmt.items.types;
 
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import dgo.dgmt.items.types.json.TypesHelper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -100,5 +101,14 @@ public class TypesTests {
         assertTrue(phoneType.isPresent());
         assertEquals(result.rawValue(), phoneType.get().rawValue());
     }
+
+    @Test
+    void testDefaultValueAppDateTimeTypeDes() {
+        AppDateTimeType result = AppTypesFactoryDefault.defaultValue(AppType.LONG_DATE);
+        Optional<AppDateTimeType> dateTimeType = TypesHelper.readFromString(AppDateTimeType.class, TypesHelper.writeAsString(result));
+        assertTrue(dateTimeType.isPresent());
+        assertTrue(result.rawValue().isEqual(dateTimeType.get().rawValue()));
+    }
+
 
 }

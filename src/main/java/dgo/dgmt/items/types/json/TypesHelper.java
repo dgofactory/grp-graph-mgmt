@@ -1,8 +1,9 @@
-package dgo.dgmt.items.types;
+package dgo.dgmt.items.types.json;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import dgo.dgmt.items.types.AbstractType;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 

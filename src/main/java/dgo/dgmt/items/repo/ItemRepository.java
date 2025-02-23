@@ -13,10 +13,7 @@ import reactor.core.publisher.Flux;
 @Service
 public class ItemRepository {
 
-
-
     private final DatabaseClient databaseClient;
-
     private final ConnectionFactory connectionFactory;
 
     public ItemRepository(DatabaseClient databaseClient, ConnectionFactory connectionFactory) {
